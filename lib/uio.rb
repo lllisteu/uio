@@ -5,5 +5,7 @@ end
 
   version
 
+  base
+
 ).each { |f| require "uio/#{f}" }
 
