@@ -46,6 +46,10 @@ module UIO
       @data ||= {}
     end
 
+    def title
+      data['title']
+    end
+
     def [](key)
       data[key]
     end
