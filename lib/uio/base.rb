@@ -75,6 +75,14 @@ module UIO
       ].flatten.compact.join("\n")
     end
 
+    def extname
+      file ? File.extname(file) : nil
+    end
+
+    def expand_path
+      file ? File.expand_path(file) : nil
+    end
+
   end
 
 end
