@@ -11,8 +11,9 @@ module UIO
 
   class Base
 
-    # Regular expression used for parsing key-value pairs
-    IO_BLOSXOM_REGEX = /^#\s*(?<key>[\S&&[^:]]+)\s*:\s*(?<value>.*)$/
+    # Regular expressions for parsing data
+    BLOSXOM_META_REGEX      = /^#\s*(?<key>[\S&&[^:]]+)\s*:\s*(?<value>.*)$/
+    YAML_FRONT_MATTER_REGEX = /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
 
     class << self
 
@@ -55,9 +56,9 @@ module UIO
 
     def load_blosxom(text)
       lines = text.lines
-      lines.any? and ( lines.first !~ IO_BLOSXOM_REGEX ) and ( self.data['title'] = lines.shift.chomp )
+      lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( self.data['title'] = lines.shift.chomp )
       while ( lines.any? ) do
-        break if lines.first !~ IO_BLOSXOM_REGEX
+        break if lines.first !~ BLOSXOM_META_REGEX
         self.data[ $~[:key] ] = $~[:value]
         lines.shift
       end
