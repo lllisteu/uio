@@ -2,6 +2,10 @@ module UIO
 
   class << self
 
+    def base(...)
+      Base.new(...)
+    end
+
     def get(file)
       Base.get file
     end
