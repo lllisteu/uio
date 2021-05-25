@@ -50,6 +50,10 @@ module UIO
       data['title']
     end
 
+    def title=(text)
+      data['title'] = text.to_s
+    end
+
     def [](key)
       data[key]
     end
