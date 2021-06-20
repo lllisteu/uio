@@ -101,6 +101,10 @@ module UIO
       ( data.any? ? data.to_yaml : "---\n" ) + "---\n" + content.to_s
     end
 
+    def basename
+      file ? File.basename(file, extname) : nil
+    end
+
     def extname
       file ? File.extname(file) : nil
     end
