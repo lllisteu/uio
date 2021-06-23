@@ -7,5 +7,7 @@ end
 
   base
 
+  collection
+
 ).each { |f| require "uio/#{f}" }
 
