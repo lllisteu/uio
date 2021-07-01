@@ -89,7 +89,7 @@ module UIO
 
     def load_yaml_front_matter(text)
       if text =~ YAML_FRONT_MATTER_REGEX
-        data.merge!( YAML.safe_load($1) || {} )
+        data.merge!( YAML.safe_load($1, permitted_classes: [Time] ) || {} )
         self.content = $'
         self
       else
