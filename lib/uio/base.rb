@@ -15,7 +15,7 @@ module UIO
 
     # Regular expressions for parsing data
     BLOSXOM_META_REGEX      = /^#\s*(?<key>[\S&&[^:]]+)\s*:\s*(?<value>.*)$/
-    YAML_FRONT_MATTER_REGEX = /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
+    YAML_FRONT_MATTER_REGEX = /\A(---\n.*?)^(---\n?)/m
 
     class << self
 
