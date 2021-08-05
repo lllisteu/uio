@@ -54,6 +54,10 @@ module UIO
       self.class.new.concat super &block
     end
 
+    def save
+      sum { |i| i.save ? 1 : 0 }
+    end
+
   end
 
 end

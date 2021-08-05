@@ -45,6 +45,12 @@ module UIO
       file ? IO.read(file) : nil
     end
 
+    def save
+      if file
+        File.write file, to_yaml_front_matter
+      end
+    end
+
     def data
       @data ||= {}
     end
