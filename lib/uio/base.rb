@@ -27,8 +27,6 @@ module UIO
 
     attr_reader :file
 
-    attr_reader :content
-
     def initialize(file: nil)
       if file
         @file = file
@@ -56,7 +54,7 @@ module UIO
     end
 
     def title
-      data['title']
+      data['title'] || ''
     end
 
     def title=(text)
@@ -65,6 +63,10 @@ module UIO
 
     def [](key)
       data[key]
+    end
+
+    def content
+      @content || ''
     end
 
     def content=(text)
