@@ -2,8 +2,8 @@ module UIO
 
   class Base
 
-    def search(regex)
-      ( (title || '').match regex ) or ( (content || '').match regex )
+    def match?(regex)
+      ( title.match? regex ) or ( content.match? regex )
     end
 
   end
@@ -11,7 +11,7 @@ module UIO
   class Collection
 
     def search(regex)
-      select { |i| i.search regex }
+      select { |i| i.match? regex }
     end
 
   end
