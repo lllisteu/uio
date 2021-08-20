@@ -66,7 +66,7 @@ module UIO
     end
 
     def content
-      @content || ''
+      @content ||= ''
     end
 
     def content=(text)
@@ -123,10 +123,6 @@ module UIO
 
     def markup
       self['markup'] || ( ['.md', '.markdown'].include?(extname.downcase) ? 'markdown' : nil )
-    end
-
-    def markdown?
-      markup == 'markdown'
     end
 
   end
