@@ -39,6 +39,11 @@ module UIO
       "#{self.class} (%s)" % (file || '-')
     end
 
+    def clear
+      data.clear
+      content.clear
+    end
+
     def read
       file ? IO.read(file) : nil
     end
