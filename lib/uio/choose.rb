@@ -42,6 +42,10 @@ module UIO
             cursor = cursor - 1
           when "\e[B"
             cursor = cursor + 1
+          when "\e[H"
+            cursor = 0
+          when "\e[F"
+            cursor = size - 1
           when "\r"
             print "\e[2K\r"
             break self[cursor]
