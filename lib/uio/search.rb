@@ -2,7 +2,8 @@ module UIO
 
   class Base
 
-    def match?(regex)
+    def match?(matchex)
+      regex = (matchex.class == Regexp) ? matchex : Regexp.new(matchex.to_s, true)
       ( title.match? regex ) or ( content.match? regex )
     end
 
