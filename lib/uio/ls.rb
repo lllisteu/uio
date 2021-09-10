@@ -7,8 +7,9 @@ module UIO
 
     def ls(regex=nil)
       ( regex ? search(regex) : self ).each do |i|
-        puts "%s %14.14s %.60s" % [
-          ( i.content.empty? ? ' ' : 'c' ),
+        puts "%s%s %14.14s %.60s" % [
+          ( i.data['link']     ? 'l' : ' ' ),
+          ( ! i.content.empty? ? 'c' : ' ' ),
           i['uid'],
           i.title
         ]
