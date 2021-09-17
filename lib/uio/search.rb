@@ -15,6 +15,8 @@ module UIO
       select { |i| i.match? regex }
     end
 
+    alias s search
+
   end
 
 end
