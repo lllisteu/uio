@@ -45,7 +45,7 @@ module UIO
     end
 
     def read
-      file ? IO.read(file) : nil
+      file ? IO.read(file, encoding: 'utf-8') : nil
     end
 
     def save
