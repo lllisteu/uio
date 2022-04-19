@@ -1,3 +1,4 @@
+require 'uio/content'
 require 'yaml'
 
 module UIO
@@ -71,11 +72,11 @@ module UIO
     end
 
     def content
-      @content ||= ''
+      @content ||= UIO::Content.new
     end
 
     def content=(text)
-      @content = text.to_s
+      content.replace text.to_s
     end
 
     def load_blosxom(text)
