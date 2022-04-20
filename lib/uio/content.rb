@@ -7,7 +7,7 @@ module UIO
     # Specified by:
     # - https://daringfireball.net/projects/markdown/basics
     def links
-      scan(%r{\[([^\]]+)\]\(([^"\)]+)(?:\ \"([^\"]*)\")?\)}).map &:compact
+      scan(%r{(?:^|[^\!])\[([^\]]+)\]\(([^"\)]+)(?:\ \"([^\"]*)\")?\)}).map &:compact
     end
 
   end
