@@ -42,9 +42,9 @@ module UIO
             cursor = cursor - 1
           when "\e[B"
             cursor = cursor + 1
-          when "\e[H"
+          when "\e[H", "\e\e[A", 'a' # home, option-up, 'a'
             cursor = 0
-          when "\e[F"
+          when "\e[F", "\e\e[B", 'z' # end, option-down, 'z'
             cursor = size - 1
           when "\r"
             print "\e[2K\r"
