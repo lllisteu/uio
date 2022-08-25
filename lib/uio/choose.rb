@@ -29,12 +29,7 @@ module UIO
       cursor = 0
       while true
         i = self[cursor]
-        # TODO: duplicates ls
-        print "\r%s %14.14s %-60.60s" % [
-          ( i.content.empty? ? ' ' : 'c' ),
-          i['uid'],
-          i.title
-        ]
+        print "\r" + i.send(:_view_ls)
 
         c = UIO::U.read_char
         case c
