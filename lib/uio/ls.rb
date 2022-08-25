@@ -1,12 +1,17 @@
 require 'uio'
-require 'uio/search'
 
 module UIO
 
   class Base
 
     def ls
-      puts "%s%s%s %14.14s %.60s" % [
+      puts _view_ls
+    end
+
+    private
+
+    def _view_ls
+      "%s%s%s %14.14s %-60.60s" % [
         ( ! content.empty?             ? 'c' : ' ' ),
         ( data['link']                 ? 'l' : ' ' ),
         ( (data['lat'] or data['lon']) ? 'g' : ' ' ),
@@ -19,8 +24,8 @@ module UIO
 
   class Collection
 
-    def ls(regex=nil)
-      ( regex ? search(regex) : self ).each &:ls
+    def ls
+      each &:ls
     end
 
   end
