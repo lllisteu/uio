@@ -31,8 +31,7 @@ module UIO
     def initialize(file: nil)
       if file
         @file = file
-        text = read
-        load_yaml_front_matter(text) || load_blosxom(text)
+        load
       end
     end
 
@@ -47,6 +46,16 @@ module UIO
 
     def read
       file ? IO.read(file, encoding: 'utf-8') : nil
+    end
+
+    def load
+      text = read
+      load_yaml_front_matter(text) || load_blosxom(text)
+    end
+
+    def reload
+      clear
+      load
     end
 
     def save
