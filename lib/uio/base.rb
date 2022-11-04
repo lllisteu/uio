@@ -80,6 +80,10 @@ module UIO
       data[key]
     end
 
+    def []=(key, value)
+      data[key] = value
+    end
+
     def content
       @content ||= UIO::Content.new
     end
