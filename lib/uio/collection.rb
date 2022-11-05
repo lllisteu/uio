@@ -58,10 +58,6 @@ module UIO
       sum { |i| i.save ? 1 : 0 }
     end
 
-    def keys
-      map { |i| i.data.keys }.flatten.uniq
-    end
-
   end
 
 end
