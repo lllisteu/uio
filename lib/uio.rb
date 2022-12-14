@@ -9,7 +9,5 @@ end
 
   collection
 
-  ls edit
-
 ).each { |f| require "uio/#{f}" }
 
