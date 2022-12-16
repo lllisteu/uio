@@ -140,10 +140,6 @@ module UIO
       file ? File.expand_path(file) : nil
     end
 
-    def markup
-      self['markup'] || ( ['.md', '.markdown'].include?(extname.downcase) ? 'markdown' : nil )
-    end
-
   end
 
 end
