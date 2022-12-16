@@ -1,6 +1,5 @@
 module UIO
-
-  class Content < String
+  class Markdown < String
 
     # Returns inline links defined in Markdown syntax.
     #
@@ -11,5 +10,4 @@ module UIO
     end
 
   end
-
 end
