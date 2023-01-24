@@ -1,17 +1,23 @@
 require 'yaml'
 
 module UIO
+
+  YAML_FRONT_MATTER_REGEX = /\A(?<yaml>---\n.*?)^(---\n?)/m
+
+  def self.parse_yaml_front_matter(text)
+    if match = text.match(YAML_FRONT_MATTER_REGEX)
+      [
+        YAML.safe_load(match[:yaml], permitted_classes: [Time] ) || {},
+        match.post_match
+      ]
+    end
+  end
+
   class Item
 
-    YAML_FRONT_MATTER_REGEX = /\A(?<yaml>---\n.*?)^(---\n?)/m
-
     def load_yaml_front_matter(text)
-      if match = text.match(YAML_FRONT_MATTER_REGEX)
-        self.data    = YAML.safe_load(match[:yaml], permitted_classes: [Time] ) || {}
-        self.content = match.post_match
-        self
-      else
-        nil
+      if result = UIO.parse_yaml_front_matter(text)
+        self.data, self.content = result
       end
     end
 
