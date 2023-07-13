@@ -1,5 +1,5 @@
 module UIO
-  class Item
+  class Item < Hash
   end
 end
 

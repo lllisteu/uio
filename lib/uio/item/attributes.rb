@@ -5,40 +5,23 @@ module UIO
   class Item
 
     def data
-      @data ||= {}
-    end
-
-    def data=(hash)
-      @data = hash
-    end
-
-    def [](key)
-      data[key]
-    end
-
-    def []=(key, value)
-      data[key] = value
+      reject { |k,v| k == 'content' }
     end
 
     def title
-      data['title'] || ''
+      self['title']
     end
 
     def title=(text)
-      data['title'] = text.to_s
+      self['title'] = text.to_s
     end
 
     def content
-      @content ||= UIO::Markdown.new
+      self['content']
     end
 
     def content=(text)
-      content.replace text.to_s
-    end
-
-    def clear
-      data.clear
-      content.clear
+      self['content'] = UIO::Markdown.new text.to_s
     end
 
   end

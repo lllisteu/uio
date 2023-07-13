@@ -5,10 +5,10 @@ module UIO
 
     def load_blosxom(text)
       lines = text.lines
-      lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( self.data['title'] = lines.shift.chomp )
+      lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( self.title = lines.shift.chomp )
       while ( lines.any? ) do
         break if lines.first !~ BLOSXOM_META_REGEX
-        self.data[ $~[:key] ] = $~[:value]
+        self[$~[:key]] = $~[:value]
         lines.shift
       end
       self.content = lines.join if lines.any?

@@ -17,7 +17,8 @@ module UIO
 
     def load_yaml_front_matter(text)
       if result = UIO.parse_yaml_front_matter(text)
-        self.data, self.content = result
+        replace result[0]
+        self.content = result[1]
       end
     end
 
