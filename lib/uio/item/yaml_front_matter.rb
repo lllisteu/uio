@@ -5,7 +5,7 @@ module UIO
   YAML_FRONT_MATTER_REGEX = /\A(?<yaml>---\n.*?)^(---\n?)/m
 
   def self.parse_yaml_front_matter(text)
-    if match = text.match(YAML_FRONT_MATTER_REGEX)
+    if match = text.force_encoding('UTF-8').match(YAML_FRONT_MATTER_REGEX)
       [
         YAML.safe_load(match[:yaml], permitted_classes: [Time] ) || {},
         match.post_match
