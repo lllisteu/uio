@@ -1,17 +1,28 @@
 module UIO
+
+  BLOSXOM_META_REGEX = /^#\s*(?<key>[\S&&[^:]]+)\s*:\s*(?<value>.*)$/
+
+  def self.parse_blosxom(text)
+    lines = text.lines
+    data = {}
+    lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( data['title'] = lines.shift.chomp )
+    while ( lines.any? ) do
+      break if lines.first !~ BLOSXOM_META_REGEX
+      data[$~[:key]] = $~[:value]
+      lines.shift
+    end
+    [
+      data,
+      lines.any? ? lines.join : ''
+    ]
+  end
+
   class Item
 
-    BLOSXOM_META_REGEX = /^#\s*(?<key>[\S&&[^:]]+)\s*:\s*(?<value>.*)$/
-
     def load_blosxom(text)
-      lines = text.lines
-      lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( self.title = lines.shift.chomp )
-      while ( lines.any? ) do
-        break if lines.first !~ BLOSXOM_META_REGEX
-        self[$~[:key]] = $~[:value]
-        lines.shift
-      end
-      self.content = lines.join if lines.any?
+      result = UIO.parse_blosxom(text)
+      replace result[0]
+      self.content = result[1]
       self
     end
 
