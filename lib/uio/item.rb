@@ -15,4 +15,6 @@ end
 
   blosxom
 
+  io
+
 ).each { |f| require "uio/item/#{f}" }
