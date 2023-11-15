@@ -5,7 +5,9 @@ module UIO
   def self.parse_blosxom(text)
     lines = text.lines
     data = {}
-    lines.any? and ( lines.first !~ BLOSXOM_META_REGEX ) and ( data['title'] = lines.shift.chomp )
+    if lines.any? and ( lines.first !~ BLOSXOM_META_REGEX )
+      data['title'] = lines.shift.chomp
+    end
     while ( lines.any? ) do
       break if lines.first !~ BLOSXOM_META_REGEX
       data[$~[:key]] = $~[:value]
