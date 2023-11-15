@@ -3,6 +3,8 @@ module UIO
   end
 end
 
+require 'uio/base'
+
 %w(
 
   base

@@ -1,17 +1,15 @@
-require 'uio/item'
-
 module UIO
 
   class << self
 
     def get(file)
-      Base.get file
+      Item.get file
     end
 
   end
 
 
-  class Base < Item
+  class Item
 
     class << self
 

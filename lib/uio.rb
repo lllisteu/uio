@@ -5,7 +5,7 @@ end
 
   version
 
-  base
+  item
 
   collection
 
