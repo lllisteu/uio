@@ -22,7 +22,7 @@ module UIO
     def initialize(file: nil)
       if file
         @file = file
-        load
+        load if File.exist?(file)
       end
     end
 
