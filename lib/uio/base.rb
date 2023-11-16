@@ -3,7 +3,15 @@ module UIO
   class << self
 
     def get(file)
+      unless defined? @@warned_uio_get_deprecation
+        warn "Warning: 'UIO.get' has been deprecated and will soon be removed."
+        @@warned_uio_get_deprecation = true
+      end
       Item.get file
+    end
+
+    def file(file)
+      Item.new file: file
     end
 
   end
