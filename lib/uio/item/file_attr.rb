@@ -11,6 +11,10 @@ module UIO
       file ? File.extname(file) : nil
     end
 
+    def dirname
+      file ? File.dirname(file) : nil
+    end
+
     def expand_path
       file ? File.expand_path(file) : nil
     end
