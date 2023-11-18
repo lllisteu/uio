@@ -3,8 +3,12 @@ module UIO
 
     attr_reader :file
 
-    def basename
-      file ? File.basename(file, extname) : nil
+    def basename(suffix='')
+      file ? File.basename(file, suffix) : nil
+    end
+
+    def name
+      file ? File.basename(file, '.*') : nil
     end
 
     def extname
