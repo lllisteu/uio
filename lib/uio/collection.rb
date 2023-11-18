@@ -30,7 +30,7 @@ module UIO
 
     def glob(pattern)
       Dir.glob(pattern).sort.each do |file|
-        push UIO.get(file)
+        push UIO.file(file)
       end.size
     end
 
