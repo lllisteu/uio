@@ -9,5 +9,7 @@ end
 
   collection
 
+  program
+
 ).each { |f| require "uio/#{f}" }
 
