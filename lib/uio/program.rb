@@ -2,6 +2,16 @@ module UIO
 
   class << self
 
+    def program(name='default')
+      if file = program_resolve(name)
+        require(file) ? file : false
+      else
+        nil
+      end
+    end
+
+    alias prg program
+
     def program_path
       @@program_path ||= [
         ENV['UIO_PROGRAM_DIRECTORY'],
