@@ -1,6 +1,7 @@
-require 'uio/markdown'
-
 module UIO
+
+  class UIO::Content < String
+  end
 
   class Item
 
@@ -21,7 +22,7 @@ module UIO
     end
 
     def content=(text)
-      self['content'] = UIO::Markdown.new text.to_s
+      self['content'] = UIO::Content.new text.to_s
     end
 
   end
