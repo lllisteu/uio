@@ -10,6 +10,10 @@ module UIO
       Collection.glob pattern
     end
 
+    def dir(directory=Dir.pwd)
+      glob "#{directory}/**/*.{txt,md,markdown}"
+    end
+
   end
 
 
