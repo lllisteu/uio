@@ -1,7 +1,6 @@
-module UIO
+require 'uio/content'
 
-  class UIO::Content < String
-  end
+module UIO
 
   class Item
 
