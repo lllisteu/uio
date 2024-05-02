@@ -42,8 +42,8 @@ module UIO
       "#{self.class} (%d)" % size
     end
 
-    def select(&block)
-      self.class.new.concat super &block
+    def select
+      self.class.new.concat super
     end
 
     def save
