@@ -1,7 +1,7 @@
 module UIO
   class Item
 
-    attr_reader :file
+    attr_accessor :file
 
     def basename(suffix='')
       file ? File.basename(file, suffix) : nil
