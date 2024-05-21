@@ -1,9 +1,5 @@
 module UIO
 
-  VERSION = '0.0.11'
-
-  def self.version
-    VERSION
-  end
+  VERSION = '0.0.12'
 
 end
