@@ -6,6 +6,9 @@ class UIO::Content
 
     # Returns inline links defined in Markdown syntax.
     #
+    # Example (title is optional):
+    # [example link](http://example.com/ "With a Title")
+    #
     # Specified by:
     # - https://daringfireball.net/projects/markdown/basics
     def markdown_links
