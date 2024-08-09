@@ -34,12 +34,8 @@ module UIO
       end
     end
 
-    def read
-      file ? IO.read(file, encoding: 'utf-8') : nil
-    end
-
     def load
-      text = read
+      text = read_file
       load_yaml_front_matter(text) || load_blosxom(text)
     end
 
