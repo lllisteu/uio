@@ -12,7 +12,7 @@ module UIO
     end
 
     def to_yaml_front_matter
-      ( data.any? ? data.to_yaml : "---\n" ) + "---\n" + content.to_s
+      UIO.dump_yaml_front_matter [data, content]
     end
 
   end
