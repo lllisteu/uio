@@ -1,13 +1,19 @@
 # title       : Markdown links
 # dt-created  : 2023-11-19 14:39:07 GMT
-# description : Get Markdown links from content
+# description : Extract Markdown links from content
 
-class UIO::Content
+module UIO
+  class Content
 
-    # Returns inline links defined in Markdown syntax.
+    # Returns Markdown inline links found in the text.
     #
-    # Example (title is optional):
+    # Markdown example (title is optional):
     # [example link](http://example.com/ "With a Title")
+    #
+    # For each link returns:
+    # - text
+    # - URL
+    # - title, if there is one
     #
     # Specified by:
     # - https://daringfireball.net/projects/markdown/basics
@@ -15,4 +21,5 @@ class UIO::Content
       scan(%r{(?:^|[^\!])\[([^\]]+)\]\(([^"\)]+)(?:\ \"([^\"]*)\")?\)}).map &:compact
     end
 
+  end
 end
