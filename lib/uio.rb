@@ -1,4 +1,11 @@
+require 'uio/shared/log'
+
 module UIO
+
+  class << self
+    include UIO::Shared::Log
+  end
+
 end
 
 %w(

@@ -1,5 +1,10 @@
+require 'uio/shared/log'
+
 module UIO
   class Item < Hash
+
+    include UIO::Shared::Log
+
   end
 end
 

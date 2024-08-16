@@ -1,3 +1,5 @@
+require 'uio/shared/log'
+
 module UIO
 
   class << self
@@ -18,6 +20,8 @@ module UIO
 
 
   class Collection < Array
+
+    include UIO::Shared::Log
 
     class << self
 
