@@ -1,6 +1,6 @@
 # title       : Markdown atx headings
 # dt-created  : 2024-08-06 08:03:29 GMT
-# description : Extract Markdown atx-style headings from content
+# description : Extract Markdown atx-style headings ('headers') from content
 
 module UIO
   class Content
