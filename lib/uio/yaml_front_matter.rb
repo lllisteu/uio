@@ -7,11 +7,20 @@ module UIO
 
   class << self
 
-    def parse_yaml_front_matter(text)
+    def split_yaml_front_matter(text)
       if match = text.force_encoding('UTF-8').match(YAML_FRONT_MATTER_REGEX)
         [
-          YAML.safe_load(match[:yaml], permitted_classes: YAML_PERMITTED_CLASSES) || {},
+          match[:yaml],
           match.post_match
+        ]
+      end
+    end
+
+    def parse_yaml_front_matter(text)
+      if parts = split_yaml_front_matter(text)
+        [
+          YAML.safe_load(parts[0], permitted_classes: YAML_PERMITTED_CLASSES) || {},
+          parts[1]
         ]
       end
     end
