@@ -5,14 +5,16 @@ module UIO
 
     include UIO::Shared::Log
 
+    def inspect
+      "#{self.class} (%s)" % (file || '-')
+    end
+
   end
 end
 
 require 'uio/base'
 
 %w(
-
-  base
 
   attributes
 

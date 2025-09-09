@@ -8,15 +8,7 @@ module UIO
 
 end
 
-%w(
-
-  version
-
-  item
-
-  collection
-
-  program
-
-).each { |f| require "uio/#{f}" }
-
+require 'uio/version'
+require 'uio/item'
+require 'uio/collection'
+require 'uio/program'
