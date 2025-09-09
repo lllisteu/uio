@@ -23,6 +23,28 @@ module UIO
       self['content'] = UIO::Content.new text.to_s
     end
 
+    attr_accessor :file
+
+    def basename(suffix='')
+      file ? File.basename(file, suffix) : nil
+    end
+
+    def name
+      file ? File.basename(file, '.*') : nil
+    end
+
+    def extname
+      file ? File.extname(file) : nil
+    end
+
+    def dirname
+      file ? File.dirname(file) : nil
+    end
+
+    def expand_path
+      file ? File.expand_path(file) : nil
+    end
+
     def load_yaml_front_matter(text)
       if result = UIO.parse_yaml_front_matter(text)
         replace result[0]
@@ -40,8 +62,6 @@ end
 require 'uio/base'
 
 %w(
-
-  file_attr
 
   blosxom
 
