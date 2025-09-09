@@ -84,9 +84,4 @@ module UIO
 end
 
 require 'uio/base'
-
-%w(
-
-  blosxom
-
-).each { |f| require "uio/item/#{f}" }
+require 'uio/item/blosxom'
