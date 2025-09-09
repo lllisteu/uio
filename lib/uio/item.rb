@@ -1,4 +1,5 @@
 require 'uio/shared/log'
+require 'uio/content'
 require 'uio/yaml_front_matter'
 
 module UIO
@@ -8,6 +9,18 @@ module UIO
 
     def inspect
       "#{self.class} (%s)" % (file || '-')
+    end
+
+    def data
+      reject { |k,v| k == 'content' }
+    end
+
+    def content
+      self['content']
+    end
+
+    def content=(text)
+      self['content'] = UIO::Content.new text.to_s
     end
 
     def load_yaml_front_matter(text)
@@ -27,8 +40,6 @@ end
 require 'uio/base'
 
 %w(
-
-  attributes
 
   file_attr
 
