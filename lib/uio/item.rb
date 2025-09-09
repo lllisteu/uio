@@ -3,6 +3,24 @@ require 'uio/content'
 require 'uio/yaml_front_matter'
 
 module UIO
+
+  class << self
+
+    def parse(text)
+      parse_yaml_front_matter(text) || parse_blosxom(text)
+    end
+
+    def stdin
+      result = parse(STDIN.read)
+
+      item = Item.new
+      item.replace result[0]
+      item.content = result[1]
+      item
+    end
+
+  end
+
   class Item < Hash
 
     include UIO::Shared::Log
@@ -70,7 +88,5 @@ require 'uio/base'
 %w(
 
   blosxom
-
-  io
 
 ).each { |f| require "uio/item/#{f}" }
