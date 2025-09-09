@@ -35,8 +35,12 @@ module UIO
     end
 
     def load
-      text = read_file
-      load_yaml_front_matter(text) || load_blosxom(text)
+      begin
+        text = read_file
+        load_yaml_front_matter(text) || load_blosxom(text)
+      rescue
+        error "#{$!} (#{file})"
+      end
     end
 
     def reload
