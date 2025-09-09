@@ -45,6 +45,12 @@ module UIO
       file ? File.expand_path(file) : nil
     end
 
+    def read_file
+      if file
+        IO.read(file, encoding: 'utf-8')
+      end
+    end
+
     def load_yaml_front_matter(text)
       if result = UIO.parse_yaml_front_matter(text)
         replace result[0]

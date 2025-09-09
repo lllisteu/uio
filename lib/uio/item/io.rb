@@ -17,15 +17,4 @@ module UIO
 
   end
 
-
-  class Item
-
-    def read_file
-      if file
-        IO.read(file, encoding: 'utf-8')
-      end
-    end
-
-  end
-
 end
