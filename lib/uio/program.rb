@@ -2,11 +2,17 @@ module UIO
 
   class << self
 
-    def program(name='default')
-      if file = program_resolve(name)
-        require(file) ? file : false
+    def program(*names)
+      if names.any?
+        names.map do |name|
+          if file = program_resolve(name)
+            require(file) ? file : false
+          else
+            nil
+          end
+        end
       else
-        nil
+        program 'default'
       end
     end
 
