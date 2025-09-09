@@ -10,16 +10,10 @@ module UIO
       Item.new file: file
     end
 
-    def parse(text)
-      parse_yaml_front_matter(text) || parse_blosxom(text)
-    end
-
     def stdin
-      result = parse(STDIN.read)
-
+      text = STDIN.read
       item = Item.new
-      item.replace result[0]
-      item.content = result[1]
+      item.load_yaml_front_matter(text) || (item.content = text)
       item
     end
 
@@ -39,7 +33,7 @@ module UIO
     def load
       begin
         text = read_file
-        load_yaml_front_matter(text) || load_blosxom(text)
+        load_yaml_front_matter(text) || (self.content = text)
       rescue
         error "#{$!} (#{file})"
       end
@@ -113,5 +107,3 @@ module UIO
 
   end
 end
-
-require 'uio/item/blosxom'
