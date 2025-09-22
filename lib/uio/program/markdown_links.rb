@@ -3,7 +3,7 @@
 # description : Extract Markdown links from content
 
 module UIO
-  class Content
+  class Text
 
     # Returns Markdown inline links found in the text.
     #

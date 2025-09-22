@@ -1,5 +1,5 @@
 require 'uio/shared/log'
-require 'uio/content'
+require 'uio/text'
 require 'uio/yaml_front_matter'
 
 module UIO
@@ -63,7 +63,7 @@ module UIO
     end
 
     def content=(text)
-      self['content'] = UIO::Content.new text.to_s
+      self['content'] = UIO::Text.new text.to_s
     end
 
     attr_accessor :file

@@ -3,7 +3,7 @@
 # description : Extract Markdown atx-style headings ('headers') from content
 
 module UIO
-  class Content
+  class Text
 
     # Returns Markdown atx-style headings found in the text.
     #
