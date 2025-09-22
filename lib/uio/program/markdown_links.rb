@@ -18,7 +18,7 @@ module UIO
     # Specified by:
     # - https://daringfireball.net/projects/markdown/basics
     def markdown_links
-      scan(%r{(?:^|[^\!])\[([^\]]+)\]\(([^"\)]+)(?:\ \"([^\"]*)\")?\)}).map &:compact
+      scan(%r{(?:^|[^\!])\[([^\]]+)\]\(([^"\)]+)(?:\ \"([^\"]*)\")?\)})
     end
 
   end
