@@ -66,6 +66,9 @@ module UIO
       self['content'] = UIO::Text.new text.to_s
     end
 
+    alias text content
+    alias text= content=
+
     attr_accessor :file
 
     def basename(suffix='')
