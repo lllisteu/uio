@@ -11,9 +11,9 @@ module UIO
     end
 
     def stdin
-      text = STDIN.read
+      txt  = STDIN.read
       item = Item.new
-      item.load_yaml_front_matter(text) || (item.content = text)
+      item.load_yaml_front_matter(txt) || (item.text = txt)
       item
     end
 
@@ -32,8 +32,8 @@ module UIO
 
     def load
       begin
-        text = read_file
-        load_yaml_front_matter(text) || (self.content = text)
+        txt = read_file
+        load_yaml_front_matter(txt) || (self.text = txt)
       rescue
         error "#{$!} (#{file})"
       end
@@ -55,19 +55,16 @@ module UIO
     end
 
     def data
-      reject { |k,v| k == 'content' }
+      reject { |k,v| k == 'text' }
     end
 
-    def content
-      self['content']
+    def text
+      self['text']
     end
 
-    def content=(text)
-      self['content'] = UIO::Text.new text.to_s
+    def text=(txt)
+      self['text'] = UIO::Text.new txt.to_s
     end
-
-    alias text content
-    alias text= content=
 
     attr_accessor :file
 
@@ -97,15 +94,15 @@ module UIO
       end
     end
 
-    def load_yaml_front_matter(text)
-      if result = UIO.parse_yaml_front_matter(text)
+    def load_yaml_front_matter(txt)
+      if result = UIO.parse_yaml_front_matter(txt)
         replace result[0]
-        self.content = result[1]
+        self.text = result[1]
       end
     end
 
     def to_yaml_front_matter
-      UIO.dump_yaml_front_matter [data, content]
+      UIO.dump_yaml_front_matter [data, text]
     end
 
   end

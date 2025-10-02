@@ -1,6 +1,6 @@
 # title       : Markdown links
 # dt-created  : 2023-11-19 14:39:07 GMT
-# description : Extract Markdown links from content
+# description : Extract Markdown links from text
 
 module UIO
   class Text

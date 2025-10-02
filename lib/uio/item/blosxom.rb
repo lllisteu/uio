@@ -24,7 +24,7 @@ module UIO
     def load_blosxom(text)
       result = UIO.parse_blosxom(text)
       replace result[0]
-      self.content = result[1]
+      self.text = result[1]
       self
     end
 
@@ -34,7 +34,7 @@ module UIO
       [
         ( title_in_data ? nil : data['title'] ),
         data_keys.map { |k| data_format % [ k, data[k] ] },
-        content
+        text
       ].flatten.compact.join("\n")
     end
 
