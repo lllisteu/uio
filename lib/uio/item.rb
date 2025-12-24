@@ -11,9 +11,8 @@ module UIO
     end
 
     def stdin
-      txt  = STDIN.read
       item = Item.new
-      item.load_yaml_front_matter(txt) || (item.text = txt)
+      item.load_yaml_front_matter STDIN.read
       item
     end
 
@@ -32,8 +31,7 @@ module UIO
 
     def load
       begin
-        txt = read_file
-        load_yaml_front_matter(txt) || (self.text = txt)
+        load_yaml_front_matter read_file
       rescue
         error "#{$!} (#{file})"
       end
@@ -95,6 +93,8 @@ module UIO
     end
 
     def load_yaml_front_matter(txt)
+      clear
+      self.text = txt
       if result = UIO.parse_yaml_front_matter(txt)
         replace result[0]
         self.text = result[1]
