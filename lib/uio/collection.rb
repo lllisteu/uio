@@ -20,7 +20,7 @@ module UIO
     end
 
     def select
-      self.class.new.concat super
+      self.class.new.replace super
     end
 
   end
