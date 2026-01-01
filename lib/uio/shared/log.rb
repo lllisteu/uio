@@ -2,13 +2,13 @@ module UIO
   module Shared
     module Log
 
-      def debug(message='')
-      end
-
-      alias info  debug
-      alias warn  debug
-      alias error debug
-      alias fatal debug
+      def trace(*); end
+      def debug(*); end
+      def info (*); end
+      def note (*); end
+      def warn (*); end
+      def error(*); end
+      def fatal(*); end
 
     end
   end
